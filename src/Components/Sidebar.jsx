@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import locationIcon from '../assets/location-icon.png';
 
 const Sidebar = ({
   isOpen,
@@ -9,6 +10,11 @@ const Sidebar = ({
   sidebarType,
   panelData,
 }) => {
+  isOpen &&
+    setTimeout(() => {
+      document.querySelector('.leaflet-marker-icon').src = locationIcon;
+    }, 0);
+
   return (
     <div
       className={`fixed inset-0 bg-black bg-opacity-50 z-50 ${
@@ -33,23 +39,26 @@ const Sidebar = ({
               </span>
             </div>
             {sidebarType == 1 ? (
-              <MapContainer
-                center={position}
-                zoom={13}
-                className='w-full h-[500px]'
-              >
-                <TileLayer
-                  attribution='<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-                />
-                <Marker position={position}>
-                  <Popup>
-                    {text}
-                    <p>Latitude : {position[0]}</p>
-                    <p>Longitude : {position[1]}</p>
-                  </Popup>
-                </Marker>
-              </MapContainer>
+              <>
+                <MapContainer
+                  center={position}
+                  zoom={13}
+                  className='w-full h-[500px]'
+                >
+                  <TileLayer
+                    attribution='<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                  />
+                  <Marker position={position}>
+                    <Popup>
+                      {text}
+                      <p>Latitude : {position[0]}</p>
+                      <p>Longitude : {position[1]}</p>
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+                <img src={locationIcon} />
+              </>
             ) : (
               <table className='border-collapse border border-black w-full text-left'>
                 <thead className='bg-blue-300'>
