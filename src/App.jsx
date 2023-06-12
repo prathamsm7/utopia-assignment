@@ -28,20 +28,24 @@ function App() {
     })();
   }, []);
 
+  // Handler for toggling sidebar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  // Update position of marker on map
   function handlePosition(value, textValue) {
     setPosition(value);
     setText(textValue);
     setSidebarType(1);
   }
 
+  // Handeler for sidebar type
   function handleSidebarType(value) {
     setSidebarType(value);
   }
 
+  // Handeler for Panel Data
   function handlePanelData({ load, voltage, pf, mcb }) {
     setPanelData({
       voltage,

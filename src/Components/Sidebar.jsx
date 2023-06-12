@@ -58,7 +58,6 @@ const Sidebar = ({
                     </Popup>
                   </Marker>
                 </MapContainer>
-                <img src={locationIcon} />
               </>
             ) : (
               <table className='border-collapse border border-black w-full text-left'>
