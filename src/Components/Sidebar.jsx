@@ -12,6 +12,7 @@ const Sidebar = ({
 }) => {
   isOpen &&
     setTimeout(() => {
+      document.querySelector('.leaflet-shadow-pane').remove();
       document.querySelector('.leaflet-marker-icon').src = locationIcon;
     }, 0);
 
