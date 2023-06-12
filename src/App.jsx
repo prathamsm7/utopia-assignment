@@ -53,6 +53,7 @@ function App() {
 
   return (
     <>
+      <p className='text-2xl font-semibold text-cyan-700 my-2'>My Devices</p>
       {tableData && tableData.length > 0 ? (
         <>
           <TableData
